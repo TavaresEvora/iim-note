@@ -1,0 +1,28 @@
+{% extends "AppBundle::app.html.twig" %}
+
+{% block title %}Add grade{% endblock %}
+
+{% block content %}
+    <h1>Add grade</h1>
+
+    {{ form_start(form) }}
+    {{ form_rest(form) }}
+
+    <input class="btn " type="submit" value="Save" />
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block script %}
+<script>
+    $(document).ready(function(){
+        $('.tooltipped').tooltip({delay: 50});
+    });
+
+    $(document).ready(function() {
+        $('select').material_select();
+    });
+</script>
+
+{% endblock %}
+
+

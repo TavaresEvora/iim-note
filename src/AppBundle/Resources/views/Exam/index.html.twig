@@ -1,0 +1,17 @@
+{% extends "AppBundle::app.html.twig" %}
+
+{% block title %}Students list{% endblock %}
+
+{% block content %}
+    <ul class="collection">
+        {% for exam in exams %}
+            <li class="collection-item dismissable">
+                <div>{{ exam.name }} - {{ exam.duree }} heures
+                    <a class="" href="{{ path('exam_show', {id: exam.id}) }}"><i class=" fa fa-eye"></i></a>
+                    <a class="secondary-content" href="{{ path('exam_delete', {id: exam.id}) }}"><i class="red-text fa fa-times"></i></a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path('exam_add') }}" class="btn-floating btn-large waves-effect waves-light green"><i class="fa fa-plus"></i></a>
+{% endblock %}

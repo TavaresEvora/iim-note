@@ -1,0 +1,16 @@
+{% extends "AppBundle::app.html.twig" %}
+
+{% block title %}Students list{% endblock %}
+
+{% block content %}
+    <ul class="collection">
+        {% for grade in grades %}
+            <li class="collection-item dismissable">
+                <div>{{ grade.student.lastname }} - {{ grade.note }} / 20 - {{ grade.exam.name }}
+                    <a class="secondary-content" href="{{ path('grade_delete', {id: grade.id}) }}"><i class="red-text fa fa-times"></i></a>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ path('grade_add') }}" class="btn-floating btn-large waves-effect waves-light green"><i class="fa fa-plus"></i></a>
+{% endblock %}

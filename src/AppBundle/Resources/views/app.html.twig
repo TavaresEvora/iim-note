@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <title>{% block title %}{% endblock %} - IIM-Note</title>
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-wrapper teal">
+                <a href="{{ path('homepage') }}" class="brand-logo">IIM-Note</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="{{ path('student_list') }}">Students</a></li>
+                    <li><a href="{{ path('exam_list') }}">Exams</a></li>
+                    <li><a href="{{ path('grade_list') }}">Grades</a></li>
+                </ul>
+                <ul class="side-nav" id="mobile-demo">
+                    <li><a href="{{ path('student_list') }}">Students</a></li>
+                    <li><a href="{{ path('exam_list') }}">Exams</a></li>
+                    <li><a href="{{ path('grade_list') }}">Grades</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        {% include 'AppBundle::flash.html.twig' %}
+
+    </header>
+    <div id="content">
+        <div class="container">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.tooltipped').tooltip({delay: 50});
+            $('.datepicker').pickadate({
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15 // Creates a dropdown of 15 years to control year
+            });
+            $('select').material_select();
+        });
+    </script>
+</body>
+</html>
