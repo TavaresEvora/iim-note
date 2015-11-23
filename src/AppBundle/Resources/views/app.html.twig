@@ -2,6 +2,8 @@
 <html>
 <head>
     <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="{{ asset('public/assets/css/app.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
@@ -10,14 +12,28 @@
 </head>
 <body>
     <header>
+        <!-- Dropdown Structure -->
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="#!">one</a></li>
+            <li><a href="#!">two</a></li>
+            <li class="divider"></li>
+            <li><a href="{{ path('fos_user_security_logout') }}">Logout<i class="material-icon right fa fa-sign-out"></i></a></li>
+        </ul>
         <nav>
             <div class="nav-wrapper teal">
                 <a href="{{ path('homepage') }}" class="brand-logo">IIM-Note</a>
-                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons fa fa-bars"></i></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="{{ path('student_list') }}">Students</a></li>
                     <li><a href="{{ path('exam_list') }}">Exams</a></li>
                     <li><a href="{{ path('grade_list') }}">Grades</a></li>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li class="teal darken-2 username"><a class="dropdown-button" href="#!" data-activates="dropdown1">{{app.user.username}}<i class="material-icon right fa fa-chevron-down"></i></a></li>
+                    {% else %}
+                        <li class="pink">
+                            <a href="{{ path('fos_user_security_login') }}">Login</a>
+                        </li>
+                    {% endif %}
                 </ul>
                 <ul class="side-nav" id="mobile-demo">
                     <li><a href="{{ path('student_list') }}">Students</a></li>
@@ -47,6 +63,9 @@
                 selectYears: 15 // Creates a dropdown of 15 years to control year
             });
             $('select').material_select();
+
+            $('input#input_text').characterCounter();
+            $(".button-collapse").sideNav()
         });
     </script>
 </body>

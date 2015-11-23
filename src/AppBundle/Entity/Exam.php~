@@ -44,14 +44,6 @@ class Exam
 
 
 
-    /**
-     * @var array
-     *
-     * Nous avons plusieurs etudiants pour un exam
-     * Une note - Grade - a un champ "student", il faut le préciser via "mappedBy"
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Student", mappedBy="exams")
-     */
-    private $students;
 
 
     /**

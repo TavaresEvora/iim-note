@@ -55,19 +55,11 @@ class Student
      *
      * Nous avons plusieurs notes pour un étudiant
      * Une note - Grade - a un champ "student", il faut le préciser via "mappedBy"
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Grade", mappedBy="student")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Grade", mappedBy="student", cascade={"persist", "remove"})
      */
     private $grades;
 
 
-    /**
-     * @var array
-     *
-     * Nous avons plusieurs exams pour un étudiant
-     * Exam - n'a pas de champ "student"
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Exam", mappedBy="students")
-     */
-    private $exams;
 
     /**
      * Get id
