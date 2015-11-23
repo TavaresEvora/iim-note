@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 class AuthController extends Controller
 {
     /**
-     * @Route("register/", name="register")
+     * @Route("hhregister/", name="register")
      */
     public function registerAction()
     {

@@ -13,6 +13,13 @@ use FOS\UserBundle\Model\User;
  */
 class Admin extends BaseUser
 {
+
+    public function __construct(){
+        parent::__construct();
+        $this->setRoles(array('ROLE_ADMIN'));
+    }
+
+
     /**
      * @var integer
      *
