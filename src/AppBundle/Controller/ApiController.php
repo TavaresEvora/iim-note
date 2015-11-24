@@ -11,7 +11,7 @@ use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 
 /**
- * Class StudentController
+ * Class ApiController
  */
 class ApiController extends FOSRestController
 {
@@ -29,6 +29,16 @@ class ApiController extends FOSRestController
     public function getApiGradesAction()
     {
         $data = $this->getDoctrine()->getManager()->getRepository('AppBundle:Grade')->findAll();
+        $view = $this->view($data, 200);
+
+        return $this->handleView($view);
+    }
+
+
+
+    public function getApiExamsAction()
+    {
+        $data = $this->getDoctrine()->getManager()->getRepository('AppBundle:Exam')->findAll();
         $view = $this->view($data, 200);
 
         return $this->handleView($view);

@@ -1,0 +1,18 @@
+{% extends "AppBundle::app.html.twig" %}
+
+{% block title %} student grade {% endblock %}
+
+{% block content %}
+    <h1>{{ student.lastname }} {{ student.firstname }}</h1>
+    <h3>list of grades</h3>
+    {% for grade in student.grades %}
+        {% if( grade is empty) %}
+            Don't have grades
+        {% else %}
+            <p>{{ grade.note }} / 20 en {{ grade.exam.name }} </p>
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}
+
+

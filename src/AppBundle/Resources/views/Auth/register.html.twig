@@ -1,7 +1,7 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% trans_default_domain 'FOSUserBundle' %}
-{% block title %}Login{% endblock %}
+{% block title %}Sign Up{% endblock %}
 {% block fos_user_content %}
 
 
@@ -9,38 +9,12 @@
         <h2 class="col s12">Sign Up</h2>
 
         <div class="row valign-wrapper">
-            <form action="{{ path("fos_user_security_check") }}" method="post">
-
-
-
-                <div class="input-field col s12">
-                    <input class="validate" type="text" id="email" name="_email"  required="required" />
-                    <label for="email">Email</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <input class="validate" type="text" id="username" name="_username" required="required" />
-                    <label for="username">Username</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <input type="password" id="password" name="_password" required="required" />
-                    <label for="password">Password</label>
-                </div>
-
-                <div class="input-field col s12">
-                    <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" />
-                    <label for="remember_me">Password comfirmation</label>
-                </div>
-
-                <div class="input-field col s6">
-                    <input class="btn" type="submit" id="_submit" name="_submit" value="Login" />
-                </div>
-
-                <div class="input-field col s12">
-                    <a class="teal-text" href="{{ path('fos_user_security_login') }}">I have an account</a>
-                </div>
-            </form>
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+            {{ form_widget(form) }}
+            <div>
+                <input type="submit" value="Sign Up" />
+            </div>
+            {{ form_end(form) }}
 
         </div>
     </div>

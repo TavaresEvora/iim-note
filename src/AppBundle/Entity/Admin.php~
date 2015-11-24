@@ -13,6 +13,13 @@ use FOS\UserBundle\Model\User;
  */
 class Admin extends BaseUser
 {
+
+    public function __construct(){
+        parent::__construct();
+        $this->setRoles(array('ROLE_ADMIN'));
+    }
+
+
     /**
      * @var integer
      *
@@ -23,6 +30,11 @@ class Admin extends BaseUser
     protected $id;
 
 
+
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $apiToken;
 
 
 

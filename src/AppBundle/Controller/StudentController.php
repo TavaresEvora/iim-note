@@ -49,6 +49,51 @@ class StudentController extends Controller
     }
 
 
+
+    /**
+     * @Route("admin/student/show/{id}", name="student_show")
+     */
+    public function showAction($id, Request $request)
+    {
+        $db = $this->getDoctrine()->getManager();
+        $student = $db
+            ->getRepository('AppBundle:Student')
+            ->find($id);
+
+        return $this->render('AppBundle:Student:show.html.twig', [
+            'student' => $student
+        ]);
+    }
+
+
+    /**
+     * @Route("admin/student/edit/{id}", name="student_edit")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $db = $this->getDoctrine()->getManager();
+        $student = $db
+            ->getRepository('AppBundle:Student')
+            ->find($id);
+        $form = $this->createForm(new StudentType(), $student);
+        if ($request->isMethod('POST')
+            && $form->handleRequest($request)
+            && $form->isValid()) {
+            $db = $this->getDoctrine()->getManager();
+            $db->persist($student);
+            $db->flush();
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Success, you are edit a student')
+            ;
+            return $this->redirectToRoute('student_list');
+        }
+        return $this->render('AppBundle:Student:edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
     /**
      * @Route("admin/student/delete/{id}", name="student_delete")
      */

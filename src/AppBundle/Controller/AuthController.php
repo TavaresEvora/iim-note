@@ -13,11 +13,15 @@ use Symfony\Component\HttpFoundation\Request;
 class AuthController extends Controller
 {
     /**
-     * @Route("hhregister/", name="register")
+     * @Route("register/confirmed", name="fos_user_registration_confirmed")
      */
-    public function registerAction()
+    public function redirectCreatedAdminAction(Request $request)
     {
-        return $this->render('AppBundle:Auth:register.html.twig');
+        $request->getSession()
+            ->getFlashBag()
+            ->add('success', 'Success, new admin are created')
+        ;
+        return $this->redirectToRoute('fos_user_registration_register');
     }
 
 }

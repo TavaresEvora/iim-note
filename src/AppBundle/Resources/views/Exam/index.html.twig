@@ -7,8 +7,9 @@
         {% for exam in exams %}
             <li class="collection-item dismissable">
                 <div>{{ exam.name }} - {{ exam.duree }} heures
-                    <a class="" href="{{ path('exam_show', {id: exam.id}) }}"><i class=" fa fa-eye"></i></a>
-                    <a class="secondary-content" href="{{ path('exam_delete', {id: exam.id}) }}"><i class="red-text fa fa-times"></i></a>
+                    <a class="fa-padding" href="{{ path('exam_show', {id: exam.id}) }}"><i class="teal-text fa fa-eye"></i></a>
+                    <a class="fa-padding" href="{{ path('exam_edit', {id: exam.id}) }}"><i class="grey-text fa fa-pencil"></i></a>
+                    <a class=" secondary-content" href="{{ path('exam_delete', {id: exam.id}) }}"><i class="red-text fa fa-times"></i></a>
                 </div>
             </li>
         {% endfor %}

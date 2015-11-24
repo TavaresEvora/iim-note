@@ -66,6 +66,37 @@ class ExamController extends Controller
     }
 
 
+
+
+    /**
+     * @Route("admin/exam/edit/{id}", name="exam_edit")
+     */
+    public function editAction(Request $request, $id)
+    {
+        $db = $this->getDoctrine()->getManager();
+        $exam = $db
+            ->getRepository('AppBundle:Student')
+            ->find($id);
+        $form = $this->createForm(new ExamType(), $exam);
+        if ($request->isMethod('POST')
+            && $form->handleRequest($request)
+            && $form->isValid()) {
+            $db = $this->getDoctrine()->getManager();
+            $db->persist($exam);
+            $db->flush();
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Success, you are edit an exam')
+            ;
+            return $this->redirectToRoute('exam_list');
+        }
+        return $this->render('AppBundle:Exam:edit.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+
+
     /**
      * @Route("admin/exam/delete/{id}", name="exam_delete")
      */

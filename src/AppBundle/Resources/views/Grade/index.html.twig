@@ -7,7 +7,8 @@
         {% for grade in grades %}
             <li class="collection-item dismissable">
                 <div>{{ grade.student.lastname }} - {{ grade.note }} / 20 - {{ grade.exam.name }}
-                    <a class="secondary-content" href="{{ path('grade_delete', {id: grade.id}) }}"><i class="red-text fa fa-times"></i></a>
+                    <a class="fa-padding" href="{{ path('grade_edit', {id: grade.id}) }}"><i class="grey-text fa fa-pencil"></i></a>
+                    <a class=" secondary-content" href="{{ path('grade_delete', {id: grade.id}) }}"><i class="red-text fa fa-times"></i></a>
                 </div>
             </li>
         {% endfor %}

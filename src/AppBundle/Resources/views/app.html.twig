@@ -14,8 +14,8 @@
     <header>
         <!-- Dropdown Structure -->
         <ul id="dropdown1" class="dropdown-content">
-            <li><a href="#!">one</a></li>
-            <li><a href="#!">two</a></li>
+            <li><a href="{{ path('fos_user_profile_show') }}">Informations <i class="material-icon fa fa-info right"></i></a></li>
+            <li><a href="{{ path('fos_user_profile_edit') }}">Parameters <i class="material-icon fa fa-cog right"></i></a></li>
             <li class="divider"></li>
             <li><a href="{{ path('fos_user_security_logout') }}">Logout<i class="material-icon right fa fa-sign-out"></i></a></li>
         </ul>
@@ -28,6 +28,7 @@
                     <li><a href="{{ path('exam_list') }}">Exams</a></li>
                     <li><a href="{{ path('grade_list') }}">Grades</a></li>
                     {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        <li><a href="{{ path('fos_user_registration_register') }}">Ajouter un admmin</a></li>
                         <li class="teal darken-2 username"><a class="dropdown-button" href="#!" data-activates="dropdown1">{{app.user.username}}<i class="material-icon right fa fa-chevron-down"></i></a></li>
                     {% else %}
                         <li class="pink">

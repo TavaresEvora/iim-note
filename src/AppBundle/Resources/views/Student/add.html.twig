@@ -4,12 +4,8 @@
 
 {% block content %}
     <h1>Add a student</h1>
+    {% include "AppBundle::form.html.twig" %}
 
-    {{ form_start(form) }}
-    {{ form_rest(form) }}
-
-    <input class="btn " type="submit" value="Save" />
-    {{ form_end(form) }}
 {% endblock %}
 
 

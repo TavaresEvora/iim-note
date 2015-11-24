@@ -17,7 +17,10 @@ class Admin extends BaseUser
     public function __construct(){
         parent::__construct();
         $this->setRoles(array('ROLE_ADMIN'));
+        $this->apiToken = $this->setApiToken();
     }
+
+
 
 
     /**
@@ -31,7 +34,10 @@ class Admin extends BaseUser
 
 
 
-
+    /**
+     * @ORM\Column(type="string", unique=true)
+     */
+    private $apiToken;
 
 
 
@@ -116,5 +122,37 @@ class Admin extends BaseUser
     public function getPassword()
     {
         return $this->password;
+    }
+
+    /**
+     * Set apiToken
+     *
+     * @param string $apiToken
+     *
+     * @return Admin
+     */
+    public function setApiToken()
+    {
+        $characts    = 'abcdefghijklmnopqrstuvwxyz';
+        $characts   .= 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $characts   .= '1234567890';
+        $code_aleatoire      = '';
+
+        for($i=0;$i < 20;$i++)
+        {
+            $code_aleatoire .= substr($characts,rand()%(strlen($characts)),1);
+        }
+
+        return ($code_aleatoire) ;
+    }
+
+    /**
+     * Get apiToken
+     *
+     * @return string
+     */
+    public function getApiToken()
+    {
+        return $this->apiToken;
     }
 }
