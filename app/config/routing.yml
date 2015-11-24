@@ -11,6 +11,7 @@ easy_admin_bundle:
 api:
     type:     rest
     resource: AppBundle\Controller\ApiController
+    defaults: {_format: json}
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

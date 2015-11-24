@@ -2,6 +2,10 @@ i.material-icon{
     font-size: 15px !important;
 }
 
+.fa-padding{
+    padding-left: 15px;
+}
+
 li.username{
-    min-width: 115px;
+    min-width: 155px;
 }

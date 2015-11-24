@@ -28,6 +28,17 @@ security:
             logout: true
             anonymous: true
 
+        api:
+            pattern: ^/api
+            knpu_guard:
+                authenticators:
+                    - app.api_token_authenticator
+                entry_point: app.api_token_authenticator
+                # by default, use the start() function from FormLoginAuthenticator
+
+
+
+
 
             
     access_control:
@@ -35,7 +46,7 @@ security:
         - { path: ^/register, role: ROLE_ADMIN }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
-                
+
     encoders:
         Symfony\Component\Security\Core\User\User:
             algorithm:   sha512
